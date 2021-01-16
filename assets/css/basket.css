@@ -1,0 +1,58 @@
+.basket {
+  margin: 8px;
+}
+
+.item {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.item > .img {
+  margin-right: 16px;
+}
+
+.name {
+  width: 100%;
+  text-decoration: none;
+}
+
+.price {
+  width: 100%;
+  color: red;
+  font-weight: bold;
+  font-size: 20px;
+  margin-left: 16px;
+}
+
+.delete {
+  height: fit-content;
+  font-weight: 700;
+  background: linear-gradient(to bottom, #ec1c24 0, #b0151b 100%);
+  padding: 10px;
+  border: 0;
+  border-radius: 5px;
+  font-size: 15px;
+  color: white;
+  cursor: pointer;
+}
+
+input {
+  border-radius: 6px;
+  border: 1px black solid;
+  height: 25px;
+  font-size: 25px;
+  margin-bottom: 8px;
+}
+
+input[type="submit"] {
+  font-weight: 700;
+  padding: 0 20px;
+  background: white;
+  border: 1px #005ca7 solid;
+  border-radius: 5px;
+  font-size: 15px;
+  color: #005ca7;
+  cursor: pointer;
+}

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Корзина</title>
+    <link rel="stylesheet" href="assets/css/global.css" />
+    <link rel="stylesheet" href="assets/css/basket.css" />
+    <script src="https://unpkg.com/vue@3.0.5"></script>
+  </head>
+  <body>
+    <div id="app" v-cloak>
+      <div class="center decoration-none">
+        <a href="index.html">Главная</a>
+      </div>
+      <div class="basket">
+        <h1>Корзина</h1>
+        <div v-if="basket.length">
+          <div class="items">
+            <div class="item" v-for="(item, idx) in basket">
+              <div class="img">
+                <img :src="'assets/img/' + item.id + '/' + item.color.imgs[0] + '.jpg'" alt="" />
+              </div>
+              <div class="name">
+                <a :href="'item.html#'+ item.categoryId + '-' + +item.id" target="_blank">
+                  {{ item.name }}
+                </a>
+                <br>
+                <span v-if="item.color.name">Цвет: {{ item.color.name }}&nbsp;&nbsp;&nbsp;</span>
+                <span v-if="item.color.dimension">Размер: {{ item.color.dimension }}</span>
+              </div>
+
+              <div class="price">{{ item.color.price }} ₽</div>
+              <button class="delete" @click="deleteItem(idx)">Удалить</button>
+            </div>
+          </div>
+          <h2>К оплате: {{ sum() }} ₽</h2>
+          <h3>Оставьте свои данные, чтобы мы связались с Вами</h3>
+          <form>
+            <div>Имя<br /><input type="text" /></div>
+            <div>Телефон<br /><input type="text" /></div>
+            <div>E-mail<br /><input type="text" /></div>
+            <div><input type="submit" /></div>
+          </form>
+        </div>
+        <div v-else>Корзина пуста</div>
+      </div>
+    </div>
+    <script src="assets/js/data.js"></script>
+    <script src="assets/js/basket.js"></script>
+  </body>
+</html>

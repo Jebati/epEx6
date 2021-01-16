@@ -1,0 +1,33 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap");
+
+body {
+  margin: 0;
+  padding: 8px;
+  font-family: "Roboto", sans-serif;
+}
+
+[v-cloak] {
+  display: none;
+}
+
+.left {
+  text-align: left;
+}
+
+.center {
+  text-align: center;
+}
+
+.decoration-none a {
+  color: black;
+  text-decoration: none;
+}
+
+.ml32 {
+  margin-left: 32px;
+}
+
+img {
+  max-width: 100%;
+  max-height: 100%;
+}

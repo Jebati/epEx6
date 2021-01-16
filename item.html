@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Товар</title>
+    <link rel="stylesheet" href="assets/css/global.css" />
+    <link rel="stylesheet" href="assets/css/item.css" />
+    <script src="https://unpkg.com/vue@3.0.5"></script>
+  </head>
+  <body>
+    <div id="app" v-cloak>
+      <div class="center decoration-none">
+        <a href="index.html">Главная</a>
+        <a href="basket.html" class="ml32">Корзина <b>{{ basket.length }}</b></a>
+      </div>
+      <div class="item">
+        <div class="main">
+          <div class="imgs">
+            <div class="main-img-prev">
+              <div class="main-img center">
+                <img
+                  :src="'assets/img/' + item.id + '/' + item.colors[colorIdx].imgs[imgIdx] + '.jpg'"
+                />
+              </div>
+            </div>
+            <div class="sub-imgs">
+              <div
+                @click="changeSubImg(idx)"
+                :class="{ selected: imgIdx == idx}"
+                class="sub-img center"
+                v-for="(img, idx) in item.colors[colorIdx].imgs"
+              >
+                <img :src="'assets/img/' + item.id + '/' + img + '.jpg'" />
+              </div>
+            </div>
+          </div>
+          <div class="details">
+            <div class="name">{{ item.name }}</div>
+            <div class="price">{{ item.colors[colorIdx].price }} ₽</div>
+            <div class="colors" v-if="item.colors.length > 1">
+              ЦВЕТА
+              <div class="colors-imgs">
+                <div
+                  v-for="(color, jdx) in item.colors"
+                  @click="changeColor(jdx)"
+                  :class="{ selected: jdx == colorIdx}"
+                  class="color-img"
+                  :title="color.name"
+                >
+                  <img :src="'assets/img/' + item.id + '/' + color.imgs[0] + '.jpg'" />
+                </div>
+              </div>
+            </div>
+            <div class="dimension" v-if="item.colors[colorIdx].dimension.length">
+              РАЗМЕРЫ
+              <div class="sizes">
+                <div
+                  class="size"
+                  v-for="(size, sizeIdx) in item.colors[colorIdx].dimension"
+                  :class="{ selected: sizeIdx == dimensionIdx}"
+                  @click="changeDimension(sizeIdx)"
+                >
+                  {{ size }}
+                </div>
+              </div>
+            </div>
+            <div style="color: red; margin-top: auto" v-if="isSizeNotSelected()">
+              Выберите размер
+            </div>
+            <div class="buy">
+              <button
+                class="add-basket"
+                @click="addBasket(false)"
+                :class="{ selected: isSizeNotSelected()}"
+              >
+                В КОРЗИНУ
+              </button>
+              <button
+                class="to-basket"
+                @click="addBasket(true)"
+                :class="{ selected: isSizeNotSelected()}"
+              >
+                Купить в один клик
+              </button>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+    <script src="assets/js/data.js"></script>
+    <script src="assets/js/item.js"></script>
+  </body>
+</html>
